@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <header>
+    <h1>Coder Cliff's Ice Cream Shop</h1>
+  </header>
+
+  <hr>
+
+  <main>
+    <h2>Pick your ice cream flavour:</h2>
+    <section>
+      <form>
+        <!-- FLAVOUR SELECTOR -->
+        <select id="iceCreamFlavour">
+          <option hidden value="select flavour">--- select flavour ---</option>
+          <option value="chocolate">Chocolate</option>
+          <option value="strawberry">Strawberry</option>
+          <option value="vanilla">Vanilla</option>
+          <option value="caramel">Caramel</option>
+        </select>
+        <!-- CASE METHOD SELECTOR -->
+        <span>using Case method</span>
+        <!-- CASE METHOD SELECTOR -->
+        <select id="methodSelector" name="case-method">
+          <option value="methodOne">1</option>
+          <option value="methodTwo">2</option>
+        </select>
+      </form>
+      <!-- DISPLAY ICE CREAM -->
+      <div id="selectedOptionDisplay"></div>
+
+    </section>
+  </main>
+
+  <script src="startup.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
