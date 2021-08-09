@@ -2,15 +2,17 @@ console.log('Hello, Select your flavour!');
 
 // DECLARATIONS //
 
+// function expression
+function getIceCreamImageFromCdn(flavour, method) {
+  return `${cdn}${flavour}-${method}.png`;
+}
+
 // >> tooling below >>
 
 // function statements
 const byId = id => document.getElementById(id);
 const create = el => document.createElement(el);
-// function expression
-function getIceCreamImageFromCdn(flavour, method) {
-  return `${cdn}${flavour}-${method}.png`;
-}
+
 // << tooling above <<
 
 // get elements that are to be manipulated
@@ -26,23 +28,16 @@ const img = create('img');
 // function expression
 function methodOne(caseVariable) {
   switchMethod = 'methodOne';
+  // using return instead of break;
   switch (caseVariable) {
     case 'chocolate':
-      console.log('Method 1: You selected chocolate');
-      fullfillIceCreamOrder('chocolate', 'methodOne');
-      break;
+      return fullfillIceCreamOrder('chocolate', 'methodOne');
     case 'strawberry':
-      console.log('Method 1: You selected strawberry');
-      fullfillIceCreamOrder('strawberry', 'methodOne');
-      break;
+      return fullfillIceCreamOrder('strawberry', 'methodOne');
     case 'vanilla':
-      console.log('Method 1: You selected vanilla');
-      fullfillIceCreamOrder('vanilla', 'methodOne');
-      break;
+      return fullfillIceCreamOrder('vanilla', 'methodOne');
     case 'caramel':
-      console.log('Method 1: You selected caramel');
-      fullfillIceCreamOrder('caramel', 'methodOne');
-      break;
+      return fullfillIceCreamOrder('caramel', 'methodOne');
     default:
       throw new error('select a ice-cream');
   }
@@ -50,51 +45,62 @@ function methodOne(caseVariable) {
 
 /* Method 2: Processing cases by specialized operations */
 
-// object of anonymous functions
+// function expression
 function methodTwo(caseVariable) {
   switchMethod = 'methodTwo';
+  // object of anonymous functions
   const noSwitch = {
     chocolate: function() {
-      fullfillIceCreamOrder('chocolate', 'methodTwo');
+      return fullfillIceCreamOrder('chocolate', 'methodTwo');
     },
     strawberry: function() {
-      console.log('Mehtod 2: You selected strawberry');
-      fullfillIceCreamOrder('strawberry', 'methodTwo');
+      return fullfillIceCreamOrder('strawberry', 'methodTwo');
     },
     vanilla: function() {
-      console.log('Mehtod 2: You selected vanilla');
-      fullfillIceCreamOrder('vanilla', 'methodTwo');
+      return fullfillIceCreamOrder('vanilla', 'methodTwo');
     },
     caramel: function() {
-      fullfillIceCreamOrder('caramel', 'methodTwo');
-      console.log('Mehtod 2: You selected caramel');
+      return fullfillIceCreamOrder('caramel', 'methodTwo');
     }
   };
-  noSwitch[caseVariable]();
+  return noSwitch[caseVariable]();
 }
 
 function fullfillIceCreamOrder(flavour, method) {
   // set image attributes
   img.alt = `${flavour} flavoured ice cream from method ${method}`;
   img.src = getIceCreamImageFromCdn(flavour, method);
-  img.classList.add('img-fluid');
-  img.style.height = '200px';
   // if img not appended append image
   if (selectedOptionDisplay.children.length === 0) {
     selectedOptionDisplay.appendChild(img);
   }
+  return;
 }
 
-function evaluate(event) {
+function evaluate() {
   if (methodSelector.value === 'methodOne') {
-    methodOne(event.target.value);
+    return methodOne(flavourSelector.value);
   } else if (methodSelector.value === 'methodTwo') {
-    methodTwo(event.target.value);
+    return methodTwo(flavourSelector.value);
   }
 }
 
 // EXECUTION //
 
+// add static img attributes
+img.classList.add('img-fluid');
+img.style.height = '200px';
+
+// add eventlistener to both selectors
 [flavourSelector, methodSelector].forEach(selector =>
   selector.addEventListener('change', evaluate)
 );
+
+/**
+ * Special Note
+ 
+ analysing all the logic closely will you will notice that the switch and the object of functions is only here as a demonstration of the 2 facts.
+
+ However if you are a sharp code writer with the goal to develop the most efficient , effective and concise logic patterns you will notice that the same result can be acheived without the use of the 2 decision methods and by only a slight tweak to the function evaluate function since it is the getIceCreamImageFromCdn function's job to change the img display all that is required in the evaulate function is to get the current values of the 2 selectors and then pass it into the getIceCreamImageFromCdn. Thereby making the functions methodOne and methodTow redundant.
+
+ */

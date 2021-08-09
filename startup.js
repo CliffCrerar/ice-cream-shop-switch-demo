@@ -6,6 +6,7 @@ const cdn = 'https://cdn.softwarecraft.co.za/ice-cream-shop/';
   Array.from(document.body.children).forEach(child =>
     child.classList.add('container')
   );
+  return;
 })();
 
 // ignore above
