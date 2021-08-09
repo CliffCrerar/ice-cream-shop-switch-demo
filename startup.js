@@ -1,7 +1,7 @@
 // ignore below
 
 const cdn = 'https://cdn.softwarecraft.co.za/ice-cream-shop/';
-(function() {
+(function(mainLogic) {
   // document.body.classList.add('container');
   // Array.from(document.body.children).forEach(child => {});
 
@@ -33,7 +33,7 @@ const cdn = 'https://cdn.softwarecraft.co.za/ice-cream-shop/';
     </div>
   `;
   document.body.appendChild(footer);
-  return;
-})();
+  return mainLogic();
+})(executeMainLogic);
 
 // ignore above
