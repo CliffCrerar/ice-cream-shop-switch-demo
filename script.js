@@ -14,6 +14,7 @@ function getIceCreamImageFromCdn(flavour, method) {
 // << tooling above <<
 
 // get elements that are to be manipulated
+const flavourSelector = byId('iceCreamFlavour');
 const methodSelector = byId('methodSelector');
 const selectedOptionDisplay = byId('selectedOptionDisplay');
 
@@ -73,13 +74,12 @@ function methodTwo(caseVariable) {
 }
 
 function fullfillIceCreamOrder(flavour, method) {
-  // selectedOptionDisplay
-  console.log(selectedOptionDisplay);
+  // set image attributes
   img.alt = `${flavour} flavoured ice cream from method ${method}`;
   img.src = getIceCreamImageFromCdn(flavour, method);
   img.classList.add('img-fluid');
   img.style.height = '200px';
-  console.log(selectedOptionDisplay.children.length);
+  // if img not appended append image
   if (selectedOptionDisplay.children.length === 0) {
     selectedOptionDisplay.appendChild(img);
   }
@@ -95,4 +95,6 @@ function evaluate(event) {
 
 // EXECUTION //
 
-byId('iceCreamFlavour').addEventListener('change', evaluate);
+[flavourSelector, methodSelector].forEach(selector =>
+  selector.addEventListener('change', evaluate)
+);
