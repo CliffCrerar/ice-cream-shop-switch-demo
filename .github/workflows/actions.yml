@@ -1,0 +1,18 @@
+name: Embed code in README
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  embed-code:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: tokusumi/markdown-embed-code@main
+        with:
+          markdown: "README.md"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          message: "synchronizing Readme"
+          silent: true
