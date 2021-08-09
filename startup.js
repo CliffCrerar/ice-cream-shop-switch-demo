@@ -3,10 +3,7 @@
 const cdn = 'https://cdn.softwarecraft.co.za/ice-cream-shop/';
 (function() {
   // document.body.classList.add('container');
-  Array.from(document.body.children).forEach(child => {
-    console.log(child);
-    child.classList.add('container');
-  });
+  // Array.from(document.body.children).forEach(child => {});
 
   const footer = document.createElement('footer');
   ['fixed-bottom', 'shadow', 'py-3'].forEach(className =>
