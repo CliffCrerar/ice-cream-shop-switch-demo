@@ -2,4 +2,4 @@
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-gsnqc1)
 
-<embed src="https://stackblitz.com/edit/ice-cream-shop-switch-demo?embed=1&file=index.html&theme=light"/>
+[![Thumbnail](./thumbnail.png)](https://ice-cream-shop-switch-demo.stackblitz.io)
